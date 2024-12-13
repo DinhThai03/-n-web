@@ -7,7 +7,7 @@
 //     $last_id = $conn->lastInsertId();
 //     return $last_id;
 // }
-function taodonhang($madon,$matk,$tongtien)
+function taodonhang($madon, $matk, $tongtien)
 {
     $conn = connectdb();
     $sql = "INSERT INTO don (madon,matk,tongtien) VALUES ('" . $madon . "','" . $tongtien . "','" . $tongtien . "')";
@@ -39,7 +39,7 @@ function taodonhang($madon,$matk,$tongtien)
 
 // }
 
-function  addcart($magh,$matk,$madt,$soluong)
+function  addcart($magh, $matk, $madt, $soluong)
 {
     $conn = connectdb();
 
@@ -55,10 +55,9 @@ function  addcart($magh,$matk,$madt,$soluong)
     $stmt->bindParam(':magh', $magh, PDO::PARAM_INT);
     $stmt->bindParam(':matk', $matk, PDO::PARAM_INT);
     $stmt->bindParam(':madt', $madt, PDO::PARAM_STR);
-  
+
     $stmt->bindParam(':soluong', $soluong, PDO::PARAM_INT);
     $stmt->execute();
-
 }
 // function getshowcart($iddh)
 // {
@@ -90,7 +89,7 @@ function getorderinfo($magh)
     $kq = $stmt->fetchALL();
     return $kq;
 }
-function addCartByid($magh,$matk,$madt,$soluong)
+function addCartByid($magh, $matk, $madt, $soluong)
 {
     $conn = connectdb();
 
@@ -112,4 +111,46 @@ function getCartByUserId($matk)
     $stmt->execute();
 
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function getAllCart()
+{
+    $conn = connectdb();
+    $stmt = $conn->prepare("select * from giohang");
+    $stmt->execute();
+    $kq = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $kq;
+}
+
+function getAllCart_DT()
+{
+    $conn = connectdb();
+    $stmt = $conn->prepare("select magh, ten, hinhanh, gia, g.soluong from giohang g join dienthoai d on g.madt = d.madt");
+    $stmt->execute();
+    $kq = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $kq;
+}
+
+function insert_Cart($matk, $madt, $sl)
+{
+    $conn = connectdb();
+    $stmt = $conn->prepare("select * from giohang where matk = $matk and madt = $madt");
+    $stmt->execute();
+    $kq = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+    if (count($kq) == 0) {
+        $sql = "INSERT INTO giohang( matk, madt, soluong) values ($matk, $madt, $sl)";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+    } else {
+        $sql = "update giohang set soluong = soluong + $sl where matk = $matk and madt = $madt";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+    }
+}
+
+function delete_Cart($magh){
+    $conn = connectdb();
+    $stmt = $conn->prepare("delete from giohang WHERE magh = $magh");
+    $stmt->execute();
 }

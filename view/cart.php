@@ -26,21 +26,21 @@
 
                 </tr>
                 <tbody>';
-
-                    $i = 0;
+                    $giohang = getAllCart_DT();
                     $tong = 0;
-                    foreach ($_SESSION['giohang'] as $item) {
-                        $tt = $item[3] * $item[4];
+                    $i = 0;
+                    foreach ($giohang as $item) {
+                        $tt = $item['gia'] * $item['soluong'];
                         $tong += $tt;
                         echo '
                         <tr>
                             <td>' . ($i + 1) . '</td>
-                            <td>' . $item[1] . '</td>
-                            <td> <img width=100px; src="image/' . $item[2] . '" alt=""></td>
-                            <td>' . $item[3] . '</td>
-                            <td>' . $item[4] . '</td>
+                            <td>' . $item['ten'] . '</td>
+                            <td> <img width=100px; src="image/' . $item['hinhanh'] . '" alt=""></td>
+                            <td>' . $item['gia'] . '</td>
+                            <td>' . $item['soluong'] . '</td>
                             <td>' . $tt . '</td>
-                            <td><a href="index.php?page_layout=delcart&i=' . $i . '" class="btn btn-danger mx-2">Xóa </a> </td>
+                            <td><a href="index.php?page_layout=delcart&magh=' . $item['magh'] . '" class="btn btn-danger mx-2">Xóa </a> </td>
 
                         </tr>';
                         $i++;
@@ -48,7 +48,7 @@
                     echo '<tr><td colspan="5">Tổng tiền thanh toán là:</td><td>' . $tong . '(VND)</td><td></td><td></td><td></td></tr>';
                     echo ' </tbody></table>';
                 } else {
-                    echo 'Bạn cần đăng nhập để xem';
+                    echo 'Đăng nhập để mua hàng';
                 }
 
                 ?>

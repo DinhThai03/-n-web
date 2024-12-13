@@ -109,7 +109,7 @@
                       <i class="fa fa-star" aria-hidden="true"></i>
                       <i class="fa fa-star-half" aria-hidden="true"></i>
                    
-                    
+                      <input type="hidden" value="' . $sp['madt'] . '" name="madt">          
                     <input type="submit" value="Mua hàng" name="addtocart">
                     </div>
                   

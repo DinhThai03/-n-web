@@ -81,8 +81,7 @@ $dssp = getalldt();
           if ($role == 1) {
             $_SESSION['phanquyen'] = $role;
             header('location: ./admin/index.php');
-          } 
-          else {
+          } else {
             $_SESSION['phanquyen'] = $role;
             $_SESSION['matk'] = $kq[0]['matk'];
 
@@ -98,57 +97,33 @@ $dssp = getalldt();
 
         $tukhoa = trim($_POST['keyword']);
         echo "<script>console.log('" . $tukhoa . "')</script>";
-        $dssp = searchProducts($tukhoa); 
+        $dssp = searchProducts($tukhoa);
         include "./view/home.php";
 
         break;
 
       case 'addcart':
-        if (isset($_POST['addtocart']) && ($_POST['addtocart'])) {
-          $id = $_POST['id'];
-          $price = $_POST['price'];
-          if (isset($_POST['soluonng'])) {
-            $soluong = $_POST['soluong'];
-          } else {
-
-            $soluong = 1;
-          }
-          $fg = 0;
-          //kiem tra san pham da ton tai hay chua neu roi tang so luong
-          $i = 0;
-          foreach ($_SESSION['giohang'] as $item) {
-            if ($item[1] === $tensp) {
-              $slnew = $soluong + $item[4];
-              $_SESSION['giohang'][$i][4] = $slnew;
-              $fg = 1;
-              break;
+        if (isset($_SESSION['matk'])) {
+          $matk = $_SESSION['matk'];
+          if (isset($_POST['addtocart'])) {
+            if (isset($_POST['madt'])) {
+              
+              $madt = $_POST['madt'];
+              $soluong = 1;
+              if (isset($_POST['soluonng'])) 
+                $soluong = $_POST['soluong'];
+              insert_Cart($matk, $madt, $soluong);
+              header('location: index.php?page_layout=cart');
             }
-            $i++;
           }
-          //chua thi them vao gio hang bth
-          if ($fg == 0) {
-            $item = array($id, $tensp, $anhlaptop, $price, $soluong);
-            $_SESSION['giohang'][] = $item;
-          }
-          header('location: index.php?page_layout=cart');
-        }
-
-        //include './view/cart.php';
+        } else
+          header('location: index.php');
         break;
       case 'delcart':
-        if (isset($_GET['i']) && ($_GET['i'] > 0)) {
-          if (isset($_SESSION['giohang']))
-            array_splice($_SESSION['giohang'], $_GET['i'], 1);
-        } else {
-
-          if (isset($_SESSION['giohang'])) unset($_SESSION['giohang']);
-        }
-        if (isset($_SESSION['giohang']) && (count($_SESSION['giohang']) > 0)) {
+        if (isset($_GET['magh'])) {
+          $magh = $_GET['magh'];
+          delete_Cart($magh);
           header('location: index.php?page_layout=cart');
-          // include './view/cart.php';
-        } else {
-
-          header('location: index.php');
         }
 
         break;
