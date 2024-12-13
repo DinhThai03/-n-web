@@ -20,10 +20,14 @@
                 <div class="container">
                     <div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
                         <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                            <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                            <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="0" class="active"
+                                aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="1"
+                                aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="2"
+                                aria-label="Slide 3"></button>
+                            <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="3"
+                                aria-label="Slide 4"></button>
                         </div>
 
                         <div class="carousel-inner ">
@@ -44,11 +48,13 @@
 
                             </div>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel" data-bs-slide="prev">
+                        <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel"
+                            data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
 
                         </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#hero-carousel" data-bs-slide="next">
+                        <button class="carousel-control-next" type="button" data-bs-target="#hero-carousel"
+                            data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
 
                         </button>
@@ -100,7 +106,7 @@
                 
                                     <br>
                                     <strong class="price text-danger">' . $sp['gia'] . '</strong>
-                    
+                                        
                     <br>
                     <div class="icon-rating text-danger">
                       <i class="fa fa-star" aria-hidden="true"></i>
