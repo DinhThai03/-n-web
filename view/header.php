@@ -29,17 +29,18 @@
                             <div class="row  ">
                                 <div style="padding-top:10px ;" class="col-1"><i class="fa fa-user text-white"
                                         aria-hidden="true"></i></div>
-                                <div class="col-9 login "><?php
-                                                            if (isset($_SESSION['tentk']) && ($_SESSION['tentk'] != "")) {
-                                                                echo '<h4 class="text-white" >' . $_SESSION['tentk'] . '</h4>
+                                <div class="col-9 login ">
+                                    <?php
+                                    if (isset($_SESSION['tentk']) && ($_SESSION['tentk'] != "")) {
+                                        echo '<h4 class="text-white" >' . $_SESSION['tentk'] . '</h4>
                                                                 <a class="text-white" href="index.php?page_layout=logout" class="sidebar-link">
                                                                 <i class="lni lni-exit"></i>
                                                                 <span>Logout</span></a>';
-                                                            } else {
-                                                                echo '    <a style="font-size: small;" href="index.php?page_layout=login">Đăng Nhập</a><br>
-                                                                <a style="font-size: smaller;" href="index.php?page_layout=signup">Đăng ký</a><br';
-                                                            }
-                                                            ?>
+                                    } else {
+                                        echo '    <a style="font-size: small;" href="index.php?page_layout=login">Đăng Nhập</a><br>
+                                                                <a style="font-size: smaller;" href="index.php?page_layout=signup">Đăng ký</a><br>';
+                                    }
+                                    ?>
 
 
                                 </div>

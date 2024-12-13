@@ -15,7 +15,12 @@
 </head>
 
 <body>
-    <form action="index.php?page_layout=login" method="post">
+    <div
+        class="container">
+        
+        <div class="row justify-content-center">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
+        <form action="index.php?page_layout=login" method="post">
         <div class="mb-3">
             <label class="form-label">Tên tài khoản</label>
             <input type="text" name="tentk" class="form-control">
@@ -33,6 +38,15 @@
         ?>
     </form>
     <a href=" signup.php">dangky</a>
+        </div>
+        
+
+        </div>
+        
+        
+    </div>
+    
+    
 </body>
 
 </html>
