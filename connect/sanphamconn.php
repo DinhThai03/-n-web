@@ -1,9 +1,9 @@
 <?php
 
-function insertsp($id, $loai_id, $manhasanxuat, $tensp, $processor, $ram, $dungluong, $vga, $manhinh, $price,  $mota, $quanity, $anhlaptop)
+function insertsp($madt,$maloai,$mahang,$ten,$bonho,$ram,$gia,$mota,$soluong,$hinhanh)
 {
     $conn = connectdb();
-    $sql = "INSERT INTO dienthoai values ($id, $loai_id, $manhasanxuat, $tensp, $processor, $ram, $dungluong, $vga, $manhinh, $price,  $mota, $quanity, $anhlaptop)";
+    $sql = "INSERT INTO dienthoai values ($madt,$maloai,$mahang,$ten,$bonho,$ram,$gia,$mota,$soluong,$hinhanh)";
     $conn->exec($sql);
 }
 function searchProducts($timkiem)
@@ -16,7 +16,7 @@ function searchProducts($timkiem)
     return $kq;
 }
 
-function updatesp($id ,$madt, $maloai, $mahang, $ten, $bonho, $ram, $gia, $mota, $soluong, $hinhanh)
+function updatesp($madt, $maloai, $mahang, $ten, $bonho, $ram, $gia, $mota, $soluong, $hinhanh)
 {
 
     // Kết nối cơ sở dữ liệu
@@ -37,7 +37,6 @@ function updatesp($id ,$madt, $maloai, $mahang, $ten, $bonho, $ram, $gia, $mota,
                     hinhanh = :hinhanh  WHERE id = :id";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':id', $id);
     $stmt->bindParam(':madt', $madt);
     $stmt->bindParam(':maloai', $maloai);
     $stmt->bindParam(':mahang', $mahang);
@@ -107,7 +106,7 @@ function getalldt_byHang($mahang)
 function getdetail($id)
 {
     if ($id > 0) {
-        $sql = "SELECT * FROM dienthoai where id=" . $id;
+        $sql = "SELECT * FROM dienthoai where madt=" . $id;
         $conn = connectdb();
         $stmt = $conn->prepare("$sql");
         $stmt->execute();
@@ -120,9 +119,8 @@ function getdetail($id)
 function getonedt($madt)
 {
     $conn = connectdb();
-    $stmt = $conn->prepare("select * from dienthoai where id=" . $madt);
+    $stmt = $conn->prepare("select * from dienthoai where madt=" . $madt);
     $stmt->execute();
     $kq = $stmt->fetchALL(PDO::FETCH_ASSOC);
     return $kq;
 }
-
