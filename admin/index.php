@@ -1,7 +1,7 @@
 <?php
 session_start();
 ob_start();
-if (!isset($_SESSION['phanquyen']))
+if (!isset($_SESSION['phanquyen']) || $_SESSION['phanquyen'] != 1)
   header('location: ../login.php');
 
 
