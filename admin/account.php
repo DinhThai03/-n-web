@@ -8,14 +8,14 @@
     <table class="table table-striped">
         <thead class="thead-dark">
             <tr>
-                <th>Id</th>
-                <th>User name</th>
+                <th>Mã TK</th>
+                <th>Tên TK</th>
                 <th>Mật khẩu</th>
-                <th>Tên</th>
+                <th>Tên người dùng</th>
                 <th>email</th>
                 <th>Số điện thoại</th>
                 <th>địa chỉ</th>
-                <th>role</th>
+                <th>Quyền</th>
 
             </tr>
         </thead>
@@ -26,19 +26,20 @@
             if (isset($kq) && (count($kq) > 0)) {
                 $i = 1;
                 foreach ($kq as $dm) {
+                    $quyen = $dm['phanquyen'] == 1 ? "admin" : "user";
                     echo '<tr>      
                     
-                                    <td>' . $dm['id_tk'] . '</td>
-                                    <td>' . $dm['username'] . '</td>
-                                    <td>' . $dm['password'] . '</td>
-                                    <td>' . $dm['name'] . '</td>
+                                    <td>' . $dm['matk'] . '</td>
+                                    <td>' . $dm['tentk'] . '</td>
+                                    <td>' . $dm['matkhau'] . '</td>
+                                    <td>' . $dm['tennguoidung'] . '</td>
                                     <td>' . $dm['email'] . '</td>
-                                    <td>' . $dm['phone'] . '</td>
-                                    <td>' . $dm['address'] . '</td>
-                                    <td>' . $dm['role'] . '</td>
+                                    <td>' . $dm['dienthoai'] . '</td>
+                                    <td>' . $dm['diachi'] . '</td>
+                                    <td>' . $quyen . '</td>
 
                                     <td class="d-flex">
-                                    <a href="index.php?page_layout=deltk&id_tk=' . $dm['id_tk'] . '" class="btn btn-danger mx-2">Xóa</a>
+                                    <a href="index.php?page_layout=deltk&id_tk=' . $dm['matk'] . '" class="btn btn-danger mx-2">Xóa</a>
                                     
                                     </td>
                                     </tr>';

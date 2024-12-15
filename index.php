@@ -2,15 +2,14 @@
 session_start();
 if (!isset($_SESSION['giohang'])) $_SESSION['giohang'] = [];
 include "./connect/connect.php";
-include "./connect/sanphamconn.php";
-include "./connect/phanloai_cnn.php";
-include "./connect/hang.php";
-include "./connect/user.php";
-include "./connect/signup_process.php";
-include "./connect/donhangconn.php";
+include "./connect/Sanpham_Connect.php";
+include "./connect/Phanloai_Connect.php";
+include "./connect/HangConnect.php";
+include "./connect/User_Connect.php";
+include "./connect/Dangky.php";
+include "./connect/DonhangConnect.php";
 $hang = getAllHang();
 $dssp = getalldt();
-
 ?>
 
 <!DOCTYPE html>
@@ -83,7 +82,7 @@ $dssp = getalldt();
           $role = $kq[0]['phanquyen'];
           if ($role == 1) {
             $_SESSION['phanquyen'] = $role;
-            header('location: ./admin/index.php');
+            header('location: ./admin/index.php?page_layout=taikhoan');
           } else {
             $_SESSION['phanquyen'] = $role;
             $_SESSION['matk'] = $kq[0]['matk'];

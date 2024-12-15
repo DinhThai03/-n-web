@@ -1,10 +1,7 @@
-<?php
-require_once '../connect/categoriesconn.php';
-?>
 <div class="container-fluid">
     <div class="card">
         <div class="card-header d-flex justify-content-between">
-            <h2>danh mục sản phẩm</h2>
+            <h2>Phân loại</h2>
             <a href="index.php?page_layout=addcate" class="btn btn-primary btn-lg">Thêm</a>
 
         </div>
@@ -14,9 +11,9 @@ require_once '../connect/categoriesconn.php';
 
             <thead class="thead-dark">
                 <tr>
-                    <th>Mã danh mục</th>
-                    <th>Tên danh mục </th>
-                    <th>Mã nhà sản xuất </th>
+                    <th>Mã loại</th>
+                    <th>Tên loại </th>
+                    <th>Tùy chọn </th>
                 </tr>
             </thead>
             <tbody>
@@ -27,12 +24,11 @@ require_once '../connect/categoriesconn.php';
                     $i = 1;
                     foreach ($kq as $dm) {
                         echo '<tr>
-                                    <td>' . $dm['id'] . '</td>
-                                    <td>' . $dm['tenloaisanpham'] . '</td>
-                                    <td>' . $dm['manhasanxuat'] . '</td>
+                                    <td>' . $dm['maloai'] . '</td>
+                                    <td>' . $dm['tenloai'] . '</td>
                                     <td >
-                                    <a href="index.php?page_layout=delcate&id=' . $dm['id'] . '" class="btn btn-danger mx-2">Xóa</a>
-                                    <a href="index.php?page_layout=updatecate&id=' . $dm['id'] . '" class="btn btn-warning">Sửa</a>
+                                    <a href="index.php?page_layout=delcate&id=' . $dm['maloai'] . '" class="btn btn-danger mx-2">Xóa</a>
+                                    <a href="index.php?page_layout=updatecate&id=' . $dm['maloai'] . '" class="btn btn-warning">Sửa</a>
                                     </td>
                                     </tr>';
                         $i++;

@@ -53,3 +53,12 @@ function delcate($id)
     $sql = "DELETE from phanloai where id=" . $id;
     $conn->exec($sql);
 }
+
+function getTenLoai($maloai){
+    $conn = connectdb();
+    $sql = "select tenloai from phanloai where maloai = $maloai";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $ten = $stmt->fetchAll(PDO::FETCH_COLUMN);
+    return $ten[0];
+}

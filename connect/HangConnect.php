@@ -21,3 +21,11 @@ function deletehang($mahang)
     $conn->exec($sql);
 }
 
+function getTenHang($mahang){
+    $conn = connectdb();
+    $sql = "select ten from hang where mahang = $mahang";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $ten = $stmt->fetchAll(PDO::FETCH_COLUMN);
+    return $ten[0];
+}

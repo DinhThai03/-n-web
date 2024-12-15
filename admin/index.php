@@ -4,10 +4,10 @@ ob_start();
 
 
 include_once '../connect/connect.php';
-require_once '../connect/sanphamconn.php';
-require_once '../connect/nhasanxuatconn.php';
-require_once '../connect/categoriesconn.php';
-require '../connect/user.php';
+require_once '../connect/Sanpham_Connect.php';
+require_once '../connect/HangConnect.php';
+require_once '../connect/Phanloai_Connect.php';
+require '../connect/User_Connect.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,9 +39,9 @@ require '../connect/user.php';
       </div>
       <ul class="sidebar-nav">
         <li class="sidebar-item">
-          <a href="index.php?page_layout=sanpham" class="sidebar-link">
+          <a href="index.php?page_layout=taikhoan" class="sidebar-link">
             <i class="lni lni-user"></i>
-            <span>Quản lý sản phẩm</span>
+            <span>Quản lý tài khoản</span>
           </a>
         </li>
         <li class="sidebar-item">
@@ -57,9 +57,9 @@ require '../connect/user.php';
           </a>
         </li>
         <li class="sidebar-item">
-          <a href="index.php?page_layout=taikhoan" class="sidebar-link">
+          <a href="index.php?page_layout=sanpham" class="sidebar-link">
             <i class="lni lni-layout"></i>
-            <span>Quản lý tài khoản</span>
+            <span>Quản lý sản phẩm</span>
           </a>
         </li>
         <li class="sidebar-item">
@@ -88,13 +88,13 @@ require '../connect/user.php';
         <div class="navbar-collapse collapse">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item ">
-              <a href="#" class="nav-icon pe-md-0">
+              <!-- <a href="#" class="nav-icon pe-md-0">
                 <img
                   src="../image/account.png"
                   width="15%"
                   class="avatar"
                   alt="" />
-              </a>
+              </a> -->
               <div class="dropdown-menu dropdown-menu-end rounded"></div>
             </li>
           </ul>
@@ -118,7 +118,7 @@ require '../connect/user.php';
                   if (isset($_GET['page_layout'])) {
                     switch ($_GET['page_layout']) {
                       case 'sanpham';
-                        $kq = getallsp();
+                        $kq = getalldt();
 
                         include "sanpham.php";
                         break;
@@ -128,12 +128,12 @@ require '../connect/user.php';
                         include "account.php";
                         break;
                       case 'danhmuc';
-                        $kq = getallcate();
+                        $kq = getallLoai();
 
                         include "categories.php";
                         break;
                       case 'nsx':
-                        $kq = getallnsx();
+                        $kq = getAllHang();
                         include "nhasanxuat.php";
                         break;
                       case 'addnsx':
@@ -144,7 +144,7 @@ require '../connect/user.php';
                           $mota = $_POST['mota'];
                           insertnsx($manhasanxuat, $tennhasanxuat, $mota);
                         }
-                        $kq = getallnsx();
+                        $kq = getAllHang();
 
                         include "nhasanxuat.php";
                         break;
@@ -156,7 +156,7 @@ require '../connect/user.php';
                           $manhasanxuat = $_POST['manhasanxuat'];
                           insertcate($id, $tenloaisanpham, $manhasanxuat);
                         }
-                        $kq = getallcate();
+                        $kq = getallLoai();
 
                         include "categories.php";
                         break;
@@ -181,7 +181,7 @@ require '../connect/user.php';
                           insertsp($id, $loai_id, $manhsanxuat, $tensp, $processor, $ram, $dungluong, $vga, $manhinh, $price,  $mota, $quanity, $anhlaptop);
                         }
 
-                        $kq = getallsp();
+                        $kq = getalldt();
 
 
                         include "sanpham.php";
@@ -190,9 +190,9 @@ require '../connect/user.php';
                       case 'deldm';
                         if (isset($_GET['id'])) {
                           $id = $_GET['id'];
-                          delsp($id);
+                          deldt($id);
                         }
-                        $kq = getallsp();
+                        $kq = getalldt();
 
                         include "sanpham.php";
                         break;
@@ -210,24 +210,24 @@ require '../connect/user.php';
                           $id = $_GET['id'];
                           delcate($id);
                         }
-                        $kq = getallcate();
+                        $kq = getallLoai();
 
                         include "categories.php";
                         break;
                       case 'delnsx';
                         if (isset($_GET['manhasanxuat'])) {
                           $manhasanxuat = $_GET['manhasanxuat'];
-                          delnsx($manhasanxuat);
+                          deletehang($manhasanxuat);
                         }
-                        $kq = getallnsx();
+                        $kq = getAllHang();
 
                         include "nhasanxuat.php";
                         break;
                       case 'updatedmform';
                         if (isset($_GET['id'])) {
                           $id = $_GET['id'];
-                          $kqone = getonesp($id);
-                          $kq = getallsp();
+                          $kqone = getonedt($id);
+                          $kq = getalldt();
 
                           include "updatedmform.php";
                           break;
@@ -247,7 +247,7 @@ require '../connect/user.php';
                           $quanity = $_POST['quanity'];
                           $anhlaptop = $_POST['anhlaptop'];
                           updatesp($id, $loai_id, $manhasanxuat, $tensp,  $processor, $ram, $dungluong, $vga, $manhinh, $price,  $mota, $quanity, $anhlaptop);
-                          $kq = getallsp();
+                          $kq = getalldt();
                           include "sanpham.php";
                         }
                         break;
@@ -256,7 +256,7 @@ require '../connect/user.php';
                         if (isset($_GET['id'])) {
                           $id = $_GET['id'];
                           $kqone = getonecate($id);
-                          $kq = getallcate();
+                          $kq = getallLoai();
                           var_dump($id);
 
                           include "updatecate.php";
@@ -268,7 +268,7 @@ require '../connect/user.php';
                           $tenloaisanpham = $_POST['tenloaisanpham'];
                           $manhasanxuat = $_POST['manhasanxuat'];
                           updatecate($id, $tenloaisanpham, $manhasanxuat); // Gọi hàm cập nhật
-                          $kq = getallcate(); // Lấy lại tất cả danh mục
+                          $kq = getallLoai(); // Lấy lại tất cả danh mục
                           include "categories.php"; // Quay lại trang danh mục
                         }
                         break;

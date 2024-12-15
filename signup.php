@@ -13,16 +13,16 @@
     <form action="index.php?page_layout=signup" method="post" class="row g-3">
         <div class="col-md-6">
             <label class="form-label">User name</label>
-            <input type="username" name="username" class="form-control">
+            <input type="username" name="tentk" class="form-control">
         </div>
         <div class="col-md-6">
             <label for="inputPassword4" class="form-label">Password</label>
-            <input type="password" name="userpass" class="form-control">
+            <input type="password" name="matkhau" class="form-control">
         </div>
 
         <div class="col-12">
             <label class="form-label">Name</label>
-            <input type="text" class="form-control" name="name">
+            <input type="text" class="form-control" name="ten">
         </div>
 
 
@@ -32,20 +32,18 @@
         </div>
         <div class="col-md-6">
             <label class="form-label">Phone</label>
-            <input type="text" name="phone" class="form-control">
+            <input type="text" name="dienthoai" class="form-control">
         </div>
 
         <div class="col-12">
             <label class="form-label">Address</label>
-            <input type="text" class="form-control" name="address">
+            <input type="text" class="form-control" name="diachi">
         </div>
 
         <div class="col-12">
             <input type="submit" class="btn btn-primary" name="signup" value="đăng ký">
         </div>
     </form>
-
-
 
 </body>
 

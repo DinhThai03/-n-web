@@ -11,7 +11,8 @@
         <div class="row contact-main-info mt-5">
             <div class="col-md-6 contact-right-content">
                 <?php
-                if (isset($_SESSION['username']) && ($_SESSION['username'] != "")) {
+                if (isset($_SESSION['tentk']) && ($_SESSION['tentk'] != "")) {
+                    $matk = $_SESSION['matk'];
 
                     echo '<table class="table table-striped">
                     <thead class="thead-dark">
@@ -26,7 +27,7 @@
 
                 </tr>
                 <tbody>';
-                    $giohang = getAllCart_DT();
+                    $giohang = getAllCart_DT($matk);
                     $tong = 0;
                     $i = 0;
                     foreach ($giohang as $item) {
@@ -57,7 +58,7 @@
             </div>
             <div class="col-md-6 contact-left-content">
                 <form action="index.php?page_layout=thanhtoan" method="post">
-                    <input type="hidden" name="tongtien" value="<?= $tong  ?>">
+                    <input type="hidden" name="tongtien" value="<?= $tong ?>">
 
                     <table class="table">
                         <tbody>

@@ -122,10 +122,10 @@ function getAllCart()
     return $kq;
 }
 
-function getAllCart_DT()
+function getAllCart_DT($matk)
 {
     $conn = connectdb();
-    $stmt = $conn->prepare("select magh, ten, hinhanh, gia, g.soluong from giohang g join dienthoai d on g.madt = d.madt");
+    $stmt = $conn->prepare("select magh, ten, hinhanh, gia, g.soluong from giohang g join dienthoai d on g.madt = d.madt where matk = $matk");
     $stmt->execute();
     $kq = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $kq;
