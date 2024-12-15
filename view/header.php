@@ -7,7 +7,7 @@
         <div class="container  py-3" style="margin-bottom: 30px;">
             <div class="row">
                 <div class="col-md-1">
-                    <a href="index.php"><img src="image/dtung-high-resolution-logo-black-transparent.png"
+                    <a href="index.php"><img src="image/logo.png"
                             style="width: 100px;" alt="logo"></a>
                 </div>
                 <div class="col-md-1"></div>

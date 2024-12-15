@@ -11,8 +11,7 @@
                             <div class="col-md-3 col-sm-6 col-xs-12 infomation mg-bottom-15">
                                 <div class="title-footer">
                                     <a href="#">
-                                        <img class="" height="50" width="200"
-                                            src="./image/dtung-high-resolution-logo-transparent.png" alt="Xgear">
+                                        <img src="image/logo.png" height="50px">
                                     </a>
                                 </div>
                                 <div class="infomation-wanda">
