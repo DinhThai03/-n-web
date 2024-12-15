@@ -1,6 +1,8 @@
 <?php
 session_start();
 ob_start();
+if (!isset($_SESSION['phanquyen']))
+  header('location: ../login.php');
 
 
 include_once '../connect/connect.php';
@@ -274,7 +276,8 @@ require '../connect/User_Connect.php';
                         break;
 
                       case 'logout':
-                        if (isset($_SESSION['role'])) unset($_SESSION['role']);
+                        if (isset($_SESSION['phanquyen']))
+                          unset($_SESSION['phanquyen']);
                         header('location: ../login.php');
                     }
                   }
