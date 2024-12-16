@@ -2,7 +2,7 @@
 session_start();
 ob_start();
 if (!isset($_SESSION['phanquyen']) || $_SESSION['phanquyen'] != 1)
-  header('location: ../login.php');
+  header('location: ../index.php?page_layout=login');
 
 
 include_once '../connect/connect.php';
@@ -167,20 +167,16 @@ require '../connect/User_Connect.php';
                         include "addsp.php";
 
                         if (isset($_POST['them']) && ($_POST['them'])) {
-                          $id = $_POST['id'];
-                          $loai_id = $_POST['loai_id'];
-                          $manhsanxuat = $_POST['manhasanxuat'];
-                          $tensp = $_POST['tensp'];
-                          $processor = $_POST['processor'];
+                          $mahang = $_POST['mahang'];
+                          $maloai = $_POST['maloai'];
+                          $tendt = $_POST['tendt'];
+                          $bonho = $_POST['bonho'];
                           $ram = $_POST['ram'];
-                          $dungluong = $_POST['dungluong'];
-                          $vga = $_POST['vga'];
-                          $manhinh = $_POST['manhinh'];
-                          $price = $_POST['price'];
+                          $gia = $_POST['gia'];
                           $mota = $_POST['mota'];
-                          $quanity = $_POST['quanity'];
-                          $anhlaptop = $_POST['anhlaptop'];
-                          insertsp($id, $loai_id, $manhsanxuat, $tensp, $processor, $ram, $dungluong, $vga, $manhinh, $price,  $mota, $quanity, $anhlaptop);
+                          $soluong = $_POST['soluong'];
+                          $hinhanh = $_POST['hinhanh'];
+                          insertdt($maloai,$mahang,$tendt,$bonho,$ram,$gia,$mota,$soluong,$hinhanh);
                         }
 
                         $kq = getalldt();

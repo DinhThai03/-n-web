@@ -1,9 +1,10 @@
 <?php
 
-function insertsp($madt,$maloai,$mahang,$ten,$bonho,$ram,$gia,$mota,$soluong,$hinhanh)
+function insertdt($maloai,$mahang,$ten,$bonho,$ram,$gia,$mota,$soluong,$hinhanh)
 {
     $conn = connectdb();
-    $sql = "INSERT INTO dienthoai values ($madt,$maloai,$mahang,$ten,$bonho,$ram,$gia,$mota,$soluong,$hinhanh)";
+    $sql = "INSERT INTO dienthoai (maloai, mahang, ten, bonho, ram, gia, mota, soluong, hinhanh) 
+            values ($maloai,$mahang,$ten,$bonho,$ram,$gia,$mota,$soluong,$hinhanh)";
     $conn->exec($sql);
 }
 function searchProducts($timkiem)

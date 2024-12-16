@@ -1,13 +1,13 @@
 <?php
-
-require_once '../connect/sanphamconn.php';
-$nsxList = getallnsx();
+require_once '../connect/HangConnect.php';
+require_once '../connect/Sanpham_Connect.php';
+$nsxList = getAllHang();
 
 // Xử lý form
-$manhasanxuat = isset($_POST['manhasanxuat']) ? $_POST['manhasanxuat'] : null;
-$categories = [];
-if ($manhasanxuat) {
-    $categories = getallcate_byID($manhasanxuat);
+$mahang = isset($_POST['mahang']) ? $_POST['mahang'] : null;
+$phanloai = [];
+if ($mahang) {
+    $phanloai = getallLoai_byID($mahang);
 }
 
 
@@ -24,13 +24,13 @@ if ($manhasanxuat) {
         <form class="" action="index.php?page_layout=addsp" method="post">
             <div class="container">
                 <div class="form">
-                    <div class="col"><input class="form-control form-control-lg " name="id" type="hidden"></div>
-                    <h5>Chọn nhà sản xuất</h5>
-                    <select name="manhasanxuat" class="form-select" onchange="this.form.submit()">
+                    <div class="col"><input class="form-control form-control-lg " name="mahang" type="hidden"></div>
+                    <h5>Hãng</h5>
+                    <select name="mahang" class="form-select" onchange="this.form.submit()">
                         <?php
                         foreach ($nsxList as $nsx) {
-                            $selected = ($manhasanxuat == $nsx['manhasanxuat']) ? 'selected' : '';
-                            echo "<option value='{$nsx['manhasanxuat']}' $selected>{$nsx['tennhasanxuat']}</option>";
+                            $selected = ($mahang == $nsx['mahang']) ? 'selected' : '';
+                            echo "<option value='{$nsx['mahang']}' $selected>{$nsx['ten']}</option>";
                         }
                         ?>
                     </select>
@@ -38,45 +38,34 @@ if ($manhasanxuat) {
 
 
 
-                <h5>Chọn danh mục</h5>
-                <select name="loai_id" class="form-select">
+                <h5>Phân loại</h5>
+                <select name="maloai" class="form-select">
 
                     <?php
-                    foreach ($categories as $cate) {
-                        echo "<option value='{$cate['id']}'>{$cate['tenloaisanpham']}</option>";
+                    foreach ($phanloai as $loai) {
+                        echo "<option value='{$loai['maloai']}'>{$loai['tenloai']}</option>";
                     }
                     ?>
                 </select>
-                <h5> Nhập tên</h5>
-                <div class="col"><input class="form-control form-control-lg " name="tensp" type="text"></div>
-                <h5> Nhập cpu</h5>
-                <div class="col"><input class="form-control form-control-lg" name="processor" type="text"></div>
-                <h5>Nhập ram</h5>
+                <h5> Tên</h5>
+                <div class="col"><input class="form-control form-control-lg " name="tendt" type="text"></div>
+                <h5> Bộ nhớ</h5>
+                <div class="col"><input class="form-control form-control-lg" name="bonho" type="text"></div>
+                <h5> Ram</h5>
                 <div class="col"><input class="form-control form-control-lg" name="ram" type="text"></div>
-                <h5>Nhập dung luong</h5>
-                <div class="col"><input class="form-control form-control-lg" name="dungluong" type="text"></div>
-                <h5>Nhập card</h5>
+                <h5> Giá</h5>
+                <div class="col"><input class="form-control form-control-lg" name="gia" type="text"></div>
+                <h5> Mô tả</h5>
 
-                <div class="col"><input class="form-control form-control-lg" name="vga" type="text"></div>
-                <h5>Nhập man hinh</h5>
-
-                <div class="col"><input class="form-control form-control-lg" name="manhinh" type="text"></div>
-                <h5>Nhập gia</h5>
-
-                <div class="col"><input class="form-control form-control-lg" name="price" type="number"></div>
-                <h5>mô tả</h5>
                 <div class="col"><input class="form-control form-control-lg" name="mota" type="text"></div>
-                <h5>cập so luong</h5>
-                <div class="col"><input class="form-control form-control-lg" name="quanity" type="text"></div>
-                <h5>Nhập anh</h5>
+                <h5> Số lượng</h5>
 
-                <div class="col"><input class="form-control form-control-lg" name="anhlaptop" type="file"></div>
-
-
-
+                <div class="col"><input class="form-control form-control-lg" name="soluong" type="number"></div>
+                <h5> Hình ảnh</h5>
+                <div class="col"><input class="form-control form-control-lg" name="hinhanh" type="file"></div>
 
             </div>
-            <input style="margin-left: 45%;" class="btn btn-primary btn-md" type="submit" name="them" value="Thêm sp">
+            <input style="margin-top: 20px;" class="btn btn-primary btn-md" type="submit" name="them" value="Thêm sp">
 
         </form>
     </div>

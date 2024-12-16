@@ -89,7 +89,21 @@
                     <div class="container">
                         <div class="row">
                             <?php
-                            foreach ($dssp as $sp) {
+                            $ds_trang = [];
+                            $sosp = 8;
+                            if(isset($_GET['trang'])){
+                                $trang = $_GET['trang'];
+                                $i = ($trang - 1) * $sosp;
+                                $j = $i +8;
+                                for($i; $i < $j; $i++){
+                                    $ds_trang[] = $dssp[$i];
+                                }
+                            }
+                            else{
+                                $ds_trang = $dssp;
+                            }
+                            foreach ($ds_trang as $sp) {
+                                
                                 echo '
                                  
                                 <div class="col-6 col-sm-6 col-md-4 col-lg-3 col sp">
