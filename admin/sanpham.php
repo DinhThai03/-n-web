@@ -30,7 +30,9 @@
         </thead>
         <tbody>
             <?php
-
+                  $page = isset($_GET['page']) ? $_GET['page'] : 1;
+                $pager = (new Pagination())->get('dienthoai', $page, 10);
+                
             if (isset($kq) && (count($kq) > 0)) {
                 $i = 1;
                 foreach ($kq as $dm) {
@@ -54,9 +56,11 @@
                 }
             }
             ?>
+
         </tbody>
 
     </table>
-    <a href="#" 1></a>
+
+</div>
 
 </div>

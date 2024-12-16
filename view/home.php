@@ -1,10 +1,11 @@
-<div class="wrapper-navbar">
-    <div class="row">
-        <div class="col-md-3 ">
-            <div class="listmenu">
-                <ul class="list-group list">
-                    <h5>Hãng</h5>
-                    <?php
+  <?php include 'Pagination.php'?>
+  <div class="wrapper-navbar">
+      <div class="row">
+          <div class="col-md-3 ">
+              <div class="listmenu">
+                  <ul class="list-group list">
+                      <h5>Hãng</h5>
+                      <?php
                     foreach ($hang as $h) {
                         echo ' <li class="list-group-item">
                 <a href="index.php?page_layout=hang&mahang=' . $h['mahang'] . '">' . $h['ten'] . '</a>
@@ -12,60 +13,60 @@
                     }
                     ?>
 
-                </ul>
-            </div>
-        </div>
-        <div class="col">
-            <div class="wrapper-content">
-                <div class="container">
-                    <div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="0" class="active"
-                                aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="1"
-                                aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="2"
-                                aria-label="Slide 3"></button>
-                            <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="3"
-                                aria-label="Slide 4"></button>
-                        </div>
+                  </ul>
+              </div>
+          </div>
+          <div class="col">
+              <div class="wrapper-content">
+                  <div class="container">
+                      <div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                          <div class="carousel-indicators">
+                              <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="0" class="active"
+                                  aria-current="true" aria-label="Slide 1"></button>
+                              <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="1"
+                                  aria-label="Slide 2"></button>
+                              <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="2"
+                                  aria-label="Slide 3"></button>
+                              <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="3"
+                                  aria-label="Slide 4"></button>
+                          </div>
 
-                        <div class="carousel-inner ">
-                            <div class="carousel-item active c-item" data-bs-interval="1000">
-                                <img src="./image/1.webp" class="d-block w-100 c-img" alt="Slide 1">
+                          <div class="carousel-inner ">
+                              <div class="carousel-item active c-item" data-bs-interval="1000">
+                                  <img src="./image/1.webp" class="d-block w-100 c-img" alt="Slide 1">
 
-                            </div>
-                            <div class="carousel-item c-item">
-                                <img src="./image/2.webp" class="d-block w-100 c-img" alt="Slide 2">
+                              </div>
+                              <div class="carousel-item c-item">
+                                  <img src="./image/2.webp" class="d-block w-100 c-img" alt="Slide 2">
 
-                            </div>
-                            <div class="carousel-item c-item">
-                                <img src="./image/3.webp" class="d-block w-100 c-img" alt="Slide 3">
+                              </div>
+                              <div class="carousel-item c-item">
+                                  <img src="./image/3.webp" class="d-block w-100 c-img" alt="Slide 3">
 
-                            </div>
-                            <div class="carousel-item c-item">
-                                <img src="./image/4.webp" class="d-block w-100 c-img" alt="Slide 4">
+                              </div>
+                              <div class="carousel-item c-item">
+                                  <img src="./image/4.webp" class="d-block w-100 c-img" alt="Slide 4">
 
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              </div>
+                          </div>
+                          <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel"
+                              data-bs-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
 
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#hero-carousel"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          </button>
+                          <button class="carousel-control-next" type="button" data-bs-target="#hero-carousel"
+                              data-bs-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
 
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="categories">
+                          </button>
+                      </div>
+                  </div>
+              </div>
+              <div class="categories">
 
-                <h3>Danh mục sản phẩm</h3>
-                <ul>
-                    <?php
+                  <h3>Danh mục sản phẩm</h3>
+                  <ul>
+                      <?php
 
                     if (isset($_GET['mahang']) && $_GET['mahang'] != '') {
                         $mahang = $_GET['mahang'];
@@ -81,14 +82,39 @@
                     }
                     
                     ?>
-                </ul>
-            </div>
+                  </ul>
+              </div>
 
-            <div class="product-1">
-                <div class="row pd-0">
-                    <div class="container">
-                        <div class="row">
-                            <?php
+              <div class="product-1">
+                  <div class="row pd-0">
+                      <div class="container">
+                          <div class="row">
+
+                              <?php
+    
+                  $page = isset($_GET['page']) ? $_GET['page'] : 1;
+                $pager = (new Pagination())->get('dienthoai', $page, 10);
+                ?>
+                              <?php
+                            // Chuẩn bị câu truy vấn
+$sql = "SELECT * FROM dienthoai LIMIT :startIndex, :rowCount";
+
+// Kết nối PDO
+$connect = connectdb();
+
+// Chuẩn bị câu truy vấn
+$stmt = $connect->prepare($sql);
+
+// Gán giá trị cho các tham số
+$stmt->bindValue(':startIndex', $pager['StartIndex'], PDO::PARAM_INT); // Giá trị bắt đầu
+$stmt->bindValue(':rowCount', 10, PDO::PARAM_INT); // Số lượng dòng muốn lấy
+
+// Thực thi truy vấn
+$stmt->execute();
+
+// Lấy dữ liệu
+$dssp = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
                             foreach ($dssp as $sp) {
                                 echo '
                                  
@@ -127,14 +153,30 @@
 
 
 
-                        </div>
-                    </div>
-                </div>
+                          </div>
+                      </div>
+                  </div>
 
 
-            </div>
-        </div>
+              </div>
+          </div>
 
-    </div>
+      </div>
 
-</div>
+
+
+      <div class="row my-2 d-flex-between">
+          <div>Hiển thị từ <?=$pager['StartPage']?> đến <?=$pager['EndPage']?> của <?=$pager['TotalItems']?> bản
+              ghi</div>
+          <ul class="pagination">
+              <?php
+                        for ($i = 1; $i <= $pager['TotalPages']; $i++) {
+                            $active = $page == $i ? 'active' : '';
+                            echo '<li class="page-item ' . $active . '">
+                                <a class="page-link" href="?page=' . $i . '">' . $i . '</a>
+                            </li>';
+                        }
+                    ?>
+          </ul>
+      </div>
+  </div>
