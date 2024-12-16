@@ -3,7 +3,7 @@
 function insertdt($maloai,$mahang,$ten,$bonho,$ram,$gia,$mota,$soluong,$hinhanh)
 {
     $conn = connectdb();
-    $sql = "INSERT INTO dienthoai (maloai, mahang, ten, bonho, ram, gia, mota, soluong, hinhanh) 
+    $sql = "INSERT INTO dienthoai(maloai, mahang, ten, bonho, ram, gia, mota, soluong, hinhanh) 
             values ($maloai,$mahang,$ten,$bonho,$ram,$gia,$mota,$soluong,$hinhanh)";
     $conn->exec($sql);
 }
