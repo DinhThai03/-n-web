@@ -73,7 +73,7 @@
                         $dsphanloai =  getallLoai_byID($mahang);
                         if (!empty($dsphanloai)) {
                             foreach ($dsphanloai as $phanloai) {
-                                echo '<li>
+                                echo '<li class="category">
                         <a href="index.php?page_layout=phanloai&mahang=' . $mahang . '&maloai=' . $phanloai['maloai'] . '">' . $phanloai['tenloai'] . '</a>
                     </li>';
                             }

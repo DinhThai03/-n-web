@@ -5,7 +5,7 @@
     </div>
     <div class="header bg-success">
         <div class="container  py-3">
-            <div class="row align-items-center" >
+            <div class="row align-items-center">
                 <div class="col-md-1">
                     <a href="index.php"><img src="image/logo.png"
                             style="width: 100px;" alt="logo"></a>
@@ -16,7 +16,7 @@
                         <form action="index.php?page_layout=search" method="post" class="d-flex">
                             <input class="form-control mr-sm-2" name="keyword" type="search"
                                 placeholder="tìm kiếm sản phẩm ...." aria-label="Search">
-                            <button  style="width: 50%;" type="submit" class="btn btn-primary">Tìm kiếm</button>
+                            <button style="width: 50%;" type="submit" class="btn btn-primary">Tìm kiếm</button>
                         </form>
 
                     </div>
@@ -24,35 +24,30 @@
                 <div class="col-md-1"></div>
 
                 <div class="col-md-2">
-                    <div class="ro">
-                        <div class="col">
 
-
-                            <div class="login ">
-                                <i class="fa fa-user text-white"
-                                    aria-hidden="true"></i>
-                                <?php
-                                if (isset($_SESSION['tentk']) && ($_SESSION['tentk'] != "")) {
-                                    echo '<div class="text-white" >' . $_SESSION['tentk'] . '</div>
+                    <div class="login ">
+                        <i class="fa fa-user text-white"
+                            aria-hidden="true"></i>
+                        <?php
+                        if (isset($_SESSION['tentk']) && ($_SESSION['tentk'] != "")) {
+                            echo $_SESSION['tentk'] . '
                                                                 <a class="text-white" href="index.php?page_layout=logout" class="sidebar-link">
                                                                 <i class="lni lni-exit"></i>
-                                                                <span>Logout</span></a>';
-                                } else {
-                                    echo '    <a style="font-size: small;" href="index.php?page_layout=login">Đăng Nhập | </a>
+                                                                <span> | Logout</span></a>';
+                        } else {
+                            echo '    <a style="font-size: small;" href="index.php?page_layout=login">Đăng Nhập | </a>
                                                                 <a style="font-size: smaller;" href="index.php?page_layout=signup">Đăng ký</a><br>';
-                                }
-                                ?>
+                        }
+                        ?>
 
-
-                            </div>
-                        </div>
 
                     </div>
+
                 </div>
 
                 <div class="col-md-2">
-                    <a href="index.php?page_layout=cart" class="text-white cart-1 ">
-                         <i class="fa fa-shopping-cart" aria-hidden="true"></i> Giỏ hàng
+                    <a href="index.php?page_layout=cart" class="text-white cart-1">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Giỏ hàng
                     </a>
                 </div>
             </div>

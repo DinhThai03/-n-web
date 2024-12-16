@@ -15,15 +15,20 @@
   height: 95%;
   text-decoration: none;
 }
-.cart-1>.col:hover{
+.cart-1:hover{
   color: gold;
 }
-.login >a{
+
+.login *{
+  color: white !important;
+}
+
+.login a{
   text-decoration: none;
   color: rgb(255 255 254);
 }
-.login >a:hover{
-  color: gold;
+.login a:hover{
+  color: gold !important;
 }
 .wrapper-content{
   margin-bottom: 10px;
@@ -38,6 +43,7 @@ margin-bottom: 10px;
   position: sticky;
   top:10px;
 }
+
 .list>li >a{
   text-decoration: none;
   color: black;
@@ -220,6 +226,7 @@ color:#333333;
   font-weight: 600;
   color: #555;
 }
+
 
 @media only screen and (max-width:1399px) {
   .fixed-action-btn{
