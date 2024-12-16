@@ -5,6 +5,7 @@
         <div class="row contact-main-info mt-5">
             <div class="col-md-6 contact-right-content">
                 <?php
+                $tong = 0;
                 if (isset($_SESSION['tentk']) && ($_SESSION['tentk'] != "")) {
                     $matk = $_SESSION['matk'];
 
@@ -22,7 +23,6 @@
                 </tr>
                 <tbody>';
                     $giohang = getAllCart_DT($matk);
-                    $tong = 0;
                     $i = 0;
                     foreach ($giohang as $item) {
                         $tt = $item['gia'] * $item['soluong'];

@@ -14,7 +14,6 @@ $dssp = getalldt();
 
 <!DOCTYPE html>
 <html lang="en">
-1
 
 <head>
     <meta charset="UTF-8">
@@ -119,7 +118,7 @@ $dssp = getalldt();
             }
           }
         } else
-          header('location: index.php');
+          header('location: index.php?page_layout=login');
         break;
       case 'delcart':
         if (isset($_GET['magh'])) {
