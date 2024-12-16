@@ -79,7 +79,7 @@
                             }
                         }
                     }
-                    
+
                     ?>
                 </ul>
             </div>
@@ -89,21 +89,26 @@
                     <div class="container">
                         <div class="row">
                             <?php
+                            $trang_hientai = 1;
+                            $trang = 1;
                             $ds_trang = [];
+                            $tongsp = count($dssp);
+
                             $sosp = 8;
-                            if(isset($_GET['trang'])){
+                            if (isset($_GET['trang'])) {
+
                                 $trang = $_GET['trang'];
-                                $i = ($trang - 1) * $sosp;
-                                $j = $i +8;
-                                for($i; $i < $j; $i++){
-                                    $ds_trang[] = $dssp[$i];
-                                }
                             }
-                            else{
-                                $ds_trang = $dssp;
+                            $i = ($trang - 1) * $sosp;
+                            $j = $i + $sosp;
+                            for ($i; $i < $j; $i++) {
+                                if ($i == $tongsp)
+                                    break;
+                                $ds_trang[] = $dssp[$i];
                             }
+
                             foreach ($ds_trang as $sp) {
-                                
+
                                 echo '
                                  
                                 <div class="col-6 col-sm-6 col-md-4 col-lg-3 col sp">
@@ -115,7 +120,7 @@
                                 <h3 class="text-dark" style="font-size: large;margin-top: 10px;">' . $sp['ten'] . ' </h3>
                         
   
-                                 <span> Ram:'. $sp['ram'] . '</span>
+                                 <span> Ram:' . $sp['ram'] . '</span>
                                 <span>Bộ nhớ: ' . $sp['bonho'] . '</span>
                 
                                     <br>
@@ -144,7 +149,55 @@
                         </div>
                     </div>
                 </div>
+                <div class="row my-2 d-flex-between">
+                    <ul class="pagination">
+                        <?php
+                        if (isset($_GET['page_layout'])) {
+                            $pagelayout = $_GET['page_layout'];
+                            $mahang = $_GET['mahang'];
 
+                            if (isset($_GET['trang']))
+                                $trang_hientai = $_GET['trang'];
+
+                            $sophantrang = ceil($tongsp / 8);
+
+
+                            for ($i = 1; $i <= $sophantrang; $i++) {
+                                if ($i == $trang_hientai) {
+                                    echo ' <li class = "page-checked">
+                                <a class = "page-link" href="?page_layout=' . $pagelayout . '&mahang=' . $mahang . '&trang=' . $i . '">' . $i . '</a>
+                            </li>';
+                                } else
+                                    echo ' <li class = "page-item ">
+                                <a class = "page-link" href="?page_layout=' . $pagelayout . '&mahang=' . $mahang . '&trang=' . $i . '">' . $i . '</a>
+
+                            </li>';
+                            }
+                        } else {
+
+                            if (isset($_GET['trang']))
+                                $trang_hientai = $_GET['trang'];
+
+                            $sophantrang = ceil($tongsp / $sosp);
+
+
+                            for ($i = 1; $i <= $sophantrang; $i++) {
+                                if ($i == $trang_hientai) {
+                                    echo ' <li class = "page-checked">
+                                <a class = "page-link" href="?trang=' . $i . '">' . $i . '</a>
+                            </li>';
+                                } else
+                                    echo ' <li class = "page-item ">
+                                <a class = "page-link" href="?trang=' . $i . '">' . $i . '</a>
+                            </li>';
+                            }
+                        }
+                        ?>
+
+                    </ul>
+
+
+                </div>
 
             </div>
         </div>
