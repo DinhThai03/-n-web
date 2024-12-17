@@ -41,11 +41,11 @@ function registerUser($tentk, $matkhau, $ten, $email, $dienthoai, $diachi)
     }
 
     $conn = connectdb();
-    $stmt = $conn->prepare("INSERT INTO taikhoan (tentk, matkhau, ten, email, dienthoai, diachi) 
+    $stmt = $conn->prepare("INSERT INTO taikhoan (tentk, matkhau, tennguoidung, email, dienthoai, diachi) 
                             VALUES (:tentk, :matkhau, :ten, :email, :dienthoai, :diachi)");
 
     $stmt->bindParam(':tentk', $tentk);
-    $stmt->bindParam(':matkhau', password_hash($matkhau, PASSWORD_BCRYPT));
+    $stmt->bindParam(':matkhau', $matkhau);
     $stmt->bindParam(':ten', $ten);
     $stmt->bindParam(':email', $email);
     $stmt->bindParam(':dienthoai', $dienthoai);
@@ -57,4 +57,3 @@ function registerUser($tentk, $matkhau, $ten, $email, $dienthoai, $diachi)
         return "Đăng ký không thành công. Vui lòng thử lại.";
     }
 }
-

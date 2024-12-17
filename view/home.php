@@ -64,29 +64,25 @@
             <div class="categories">
 
                 <h3>Danh mục sản phẩm</h3>
-                <ul>
-                    <?php
+                <?php
 
-                    if (isset($_GET['mahang']) && $_GET['mahang'] != '') {
-                        $mahang = $_GET['mahang'];
-                        // Gọi hàm lấy danh mục theo hang
-                        $dsphanloai =  getallLoai_byID($mahang);
-                        if (!empty($dsphanloai)) {
-                            foreach ($dsphanloai as $phanloai) {
-                                echo '<li class="category">
-                        <a href="index.php?page_layout=phanloai&mahang=' . $mahang . '&maloai=' . $phanloai['maloai'] . '">' . $phanloai['tenloai'] . '</a>
-                    </li>';
-                            }
+                if (isset($_GET['mahang']) && $_GET['mahang'] != '') {
+                    $mahang = $_GET['mahang'];
+                    // Gọi hàm lấy danh mục theo hang
+                    $dsphanloai =  getallLoai_byID($mahang);
+                    if (!empty($dsphanloai)) {
+                        foreach ($dsphanloai as $phanloai) {
+                            echo '<div style="width: 150px; padding-left: 10px;"  class="phanloai black-text"><a style="text-decoration: none; color: rgb(255, 255, 255); border-bottom: 2px solid white; background-color: black; margin-right: 10px; padding: 2px; display: block; width: 100%;" href="index.php?page_layout=phanloai&mahang=' . $mahang . '&maloai=' . $phanloai['maloai'] . '">' . $phanloai['tenloai'] . '</a> </div>';
                         }
                     }
+                }
 
-                    ?>
-                </ul>
+                ?>
             </div>
 
             <div class="product-1">
                 <div class="row pd-0">
-                    <div class="container">
+                    <div class="container listsp">
                         <div class="row">
                             <?php
                             $trang_hientai = 1;

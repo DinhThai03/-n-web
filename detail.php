@@ -78,6 +78,11 @@
             <div class="col col-sm-6 col-md-1 col-lg-1 ccc"></div>
             <div class="col col-sm col-md-6 col-lg-6"> <!-- thong tin mua hang-->
               <h3 style="text-transform: uppercase;"> ' . $prodetail['ten'] . '; </h3> <br>
+              <h6 style="text-transform: uppercase;"> Giá: ' . $prodetail['gia'] . '; </h6> <br>
+              <h6 style="text-transform: uppercase;"> Ram: ' . $prodetail['ram'] . '; </h6> <br>
+              <h6 style="text-transform: uppercase;"> Bộ nhớ: ' . $prodetail['bonho'] . '; </h6> <br>
+
+
               <div class="icon-rating text-danger">
                 <i class="fa fa-star" aria-hidden="true"></i>
                 <i class="fa fa-star" aria-hidden="true"></i>

@@ -1,11 +1,13 @@
 <?php
 
-function insertdt($maloai,$mahang,$ten,$bonho,$ram,$gia,$mota,$soluong,$hinhanh)
+function insertdt($maloai, $mahang, $ten, $bonho, $ram, $gia, $mota, $soluong, $hinhanh)
 {
     $conn = connectdb();
     $sql = "INSERT INTO dienthoai(maloai, mahang, ten, bonho, ram, gia, mota, soluong, hinhanh) 
-            values ($maloai,$mahang,$ten,$bonho,$ram,$gia,$mota,$soluong,$hinhanh)";
-    $conn->exec($sql);
+            values ($maloai,$mahang,$ten,$bonho,$ram,$gia,$mota,$soluong,:hinhanh)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(':hinhanh', $hinhanh);
+    $stmt->execute();
 }
 function searchProducts($timkiem)
 {
@@ -24,7 +26,7 @@ function updatesp($madt, $maloai, $mahang, $ten, $bonho, $ram, $gia, $mota, $sol
     $conn = connectdb();
 
     // Câu lệnh SQL với placeholders
-    $sql = "UPDATE laptops 
+    $sql = "UPDATE dienthoai 
                 SET
                     madt=:madt,
                     maloai =:maloai,

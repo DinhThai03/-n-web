@@ -7,37 +7,14 @@
 //     $last_id = $conn->lastInsertId();
 //     return $last_id;
 // }
-function taodonhang($madon, $matk, $tongtien)
+function taodonhang($matk, $tongtien)
 {
     $conn = connectdb();
-    $sql = "INSERT INTO don (madon,matk,tongtien) VALUES ('" . $madon . "','" . $tongtien . "','" . $tongtien . "')";
+    $sql = "INSERT INTO don (matk,tongtien) VALUES ($matk, $tongtien)";
     $conn->exec($sql);
     $last_id = $conn->lastInsertId();
     return $last_id;
 }
-
-// function  addcart($iddh, $laptop_id, $tensp, $anhsp, $tongtien, $soluong)
-// {
-//     $conn = connectdb();
-
-//     // Kiểm tra xem laptop_id có tồn tại trong bảng laptops không
-//     $sql_check = "SELECT id FROM laptops WHERE id = :laptop_id";
-//     $stmt = $conn->prepare($sql_check);
-//     $stmt->bindParam(':laptop_id', $laptop_id, PDO::PARAM_INT);
-//     $stmt->execute();
-//     // Nếu laptop_id tồn tại, thực hiện thêm vào bảng chitietdonhang
-//     $sql = "INSERT INTO chitietdonhang (iddh, laptop_id, tensp, anhsp, tongtien, soluong)
-//             VALUES (:iddh, :laptop_id, :tensp, :anhsp, :tongtien, :soluong)";
-//     $stmt = $conn->prepare($sql);
-//     $stmt->bindParam(':iddh', $iddh, PDO::PARAM_INT);
-//     $stmt->bindParam(':laptop_id', $laptop_id, PDO::PARAM_INT);
-//     $stmt->bindParam(':tensp', $tensp, PDO::PARAM_STR);
-//     $stmt->bindParam(':anhsp', $anhsp, PDO::PARAM_STR);
-//     $stmt->bindParam(':tongtien', $tongtien, PDO::PARAM_STR);
-//     $stmt->bindParam(':soluong', $soluong, PDO::PARAM_INT);
-//     $stmt->execute();
-
-// }
 
 function  addcart($magh, $matk, $madt, $soluong)
 {
@@ -59,15 +36,6 @@ function  addcart($magh, $matk, $madt, $soluong)
     $stmt->bindParam(':soluong', $soluong, PDO::PARAM_INT);
     $stmt->execute();
 }
-// function getshowcart($iddh)
-// {
-//     $conn = connectdb();
-//     $stmt = $conn->prepare("SELECT * from chitietdonhang WHERE iddh=" . $iddh);
-//     $stmt->execute();
-//     $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-//     $kq = $stmt->fetchALL();
-//     return $kq;
-// }
 
 function getshowcart($magh)
 {
@@ -137,7 +105,7 @@ function insert_Cart($matk, $madt, $sl)
     $stmt = $conn->prepare("select * from giohang where matk = $matk and madt = $madt");
     $stmt->execute();
     $kq = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
+
     if (count($kq) == 0) {
         $sql = "INSERT INTO giohang( matk, madt, soluong) values ($matk, $madt, $sl)";
         $stmt = $conn->prepare($sql);
@@ -149,7 +117,8 @@ function insert_Cart($matk, $madt, $sl)
     }
 }
 
-function delete_Cart($magh){
+function delete_Cart($magh)
+{
     $conn = connectdb();
     $stmt = $conn->prepare("delete from giohang WHERE magh = $magh");
     $stmt->execute();

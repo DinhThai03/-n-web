@@ -7,8 +7,7 @@
         <div class="container  py-3">
             <div class="row align-items-center">
                 <div class="col-md-1">
-                    <a href="index.php"><img src="image/logo.png"
-                            style="width: 100px;" alt="logo"></a>
+                    <a href="index.php"><img src="image/logo.png" style="width: 100px;" alt="logo"></a>
                 </div>
                 <div class="col-md-2"></div>
                 <div class="col-md-4">
@@ -26,16 +25,15 @@
                 <div class="col-md-2">
 
                     <div class="login ">
-                        <i class="fa fa-user text-white"
-                            aria-hidden="true"></i>
+
                         <?php
                         if (isset($_SESSION['tentk']) && ($_SESSION['tentk'] != "")) {
-                            echo $_SESSION['tentk'] . '
+                            echo '<div> <i class="fa fa-user text-white" aria-hidden="true"> </i>' . $_SESSION['tentk'] . '
                                                                 <a class="text-white" href="index.php?page_layout=logout" class="sidebar-link">
                                                                 <i class="lni lni-exit"></i>
-                                                                <span> | Logout</span></a>';
+                                                                <span> | Logout</span></a></div>';
                         } else {
-                            echo '    <a style="font-size: small;" href="index.php?page_layout=login">Đăng Nhập | </a>
+                            echo '<i class="fa fa-user text-white" aria-hidden="true"></i>    <a style="font-size: small;" href="index.php?page_layout=login">Đăng Nhập | </a>
                                                                 <a style="font-size: smaller;" href="index.php?page_layout=signup">Đăng ký</a><br>';
                         }
                         ?>

@@ -37,7 +37,7 @@
                     echo '<tr>      
                                     <td>' . $dm['madt'] . '</td>
                                     <td>' . getTenLoai($dm['maloai']) . '</td>
-                                    <td>' . getTenHang($dm['mahang']) .'</td>
+                                    <td>' . getTenHang($dm['mahang']) . '</td>
                                     <td>' . $dm['ten'] . '</td>
                                     <td>' . $dm['bonho'] . '</td>
                                     <td>' . $dm['ram'] . '</td>
@@ -57,6 +57,5 @@
         </tbody>
 
     </table>
-    <a href="#" 1></a>
 
 </div>
